@@ -6,6 +6,7 @@ import "dotenv/config";
 
 import router from "./router.js";
 import pageHelper from "./helpers/pageHelper.js";
+import { authMiddleware } from "./middlewares/authMiddleware.js";
 
 const app = express();
 const PORT = 5000;
@@ -37,7 +38,7 @@ app.set("views", "src/views");
 app.use(express.static("src/public"));  
 app.use(express.urlencoded());
 app.use(cookieParser());
-// app.use(authMiddleware);
+app.use(authMiddleware);
 
 // routing
 app.use(router);
