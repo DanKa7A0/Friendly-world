@@ -22,4 +22,10 @@ animalController.post("/create", isAuth, async (req, res) => {
     }
 });
 
+animalController.get("/search", async (req, res) => {
+    const filter = req.query;
+    const animals = await animalService.getAnimals(filter);
+    res.render("search", {animals});
+});
+
 export default animalController;
