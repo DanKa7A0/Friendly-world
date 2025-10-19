@@ -2,7 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import handlebars from "express-handlebars";
 import cookieParser from "cookie-parser";
+
 import router from "./router.js";
+import pageHelper from "./helpers/pageHelper.js";
 
 const app = express();
 const PORT = 5000;
@@ -22,6 +24,9 @@ app.engine(("hbs"), handlebars.engine({
     , runtimeOptions: {
         allowProtoMethodsByDefault: true,
         allowProtoPropertiesByDefault: true,
+    }
+    , helpers: {
+        ...pageHelper
     }
 }));
 app.set("view engine", "hbs");
