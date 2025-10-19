@@ -12,7 +12,7 @@ authController.post("/register", async (req, res) => {
     const userData = req.body;
     try {
         const token = await authService.register(userData);
-        res.status(201).cookie("auth", token).redirect("/");
+        res.cookie("auth", token).redirect("/");
     }
     catch(err){        
         const errMsg = getErrMsg(err);
@@ -23,6 +23,18 @@ authController.post("/register", async (req, res) => {
 
 authController.get("/login", (req, res) => {
     res.render("auth/login");
+});
+
+authController.post("/login", async (req, res) => {
+    const userData = req.body;
+    try {
+        const token = await authService.login(userData);
+        res.cookie("auth", token).redirect("/");
+    }
+    catch(err){        
+        const errMsg = getErrMsg(err);
+        res.render("auth/login", {errMsg, userData});
+    }
 });
 
 export default authController;
