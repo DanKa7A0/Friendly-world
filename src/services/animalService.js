@@ -5,3 +5,12 @@ export async function createAnimal(animalData, userData) {
     const animal = await Animal.create({...animalData, owner});
     return animal;
 }
+
+export async function getAnimalsHome(){
+    const fetchData = {name: 1, need: 1, image: 1}
+    const result = await Animal
+        .find({}, fetchData)
+        .sort({ _id: -1 })
+        .limit(3);
+    return result;
+}
