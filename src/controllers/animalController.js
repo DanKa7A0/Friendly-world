@@ -14,7 +14,7 @@ animalController.post("/create", isAuth, async (req, res) => {
     const userData = req.user;
     try {
         await animalService.createAnimal(animalData, userData);
-        res.redirect("/");
+        res.redirect("/dashboard");
     }
     catch(err){        
         const errMsg = getErrMsg(err);
