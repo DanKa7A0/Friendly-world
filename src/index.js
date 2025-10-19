@@ -10,7 +10,7 @@ const db = "mongodb://localhost:27017/";
 
 // connect to db
 try {
-    await mongoose.connect(db, { dbName: "Mind_Blog" });
+    await mongoose.connect(db, { dbName: "Friendly_World" });
     console.log("Successfully connected to db");
 } catch(err){
     console.error("Can not connect to db", err);
