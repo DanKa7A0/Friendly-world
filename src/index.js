@@ -10,7 +10,7 @@ import pageHelper from "./helpers/pageHelper.js";
 const app = express();
 const PORT = 5000;
 const db = "mongodb://localhost:27017/";
-
+        
 // connect to db
 try {
     await mongoose.connect(db, { dbName: "Friendly_World" });
