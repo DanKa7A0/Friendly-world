@@ -1,12 +1,17 @@
 import { Router } from "express";
-import { getAnimalsHome } from "../services/animalService.js";
+import { animalService } from "../services/index.js";
+
 
 const homeController = Router();
 
 homeController.get("/", async (req, res) => {
-    const animals = await getAnimalsHome();
-    console.log(animals);
+    const animals = await animalService.getAnimalsHome();
     res.render("home", {animals});
+});
+
+homeController.get("/dashboard", async (req, res) => {
+    const animals = await animalService.getAnimalsDashboard();
+    res.render("dashboard", {animals});
 });
 
 export default homeController;

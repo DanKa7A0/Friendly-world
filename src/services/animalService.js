@@ -14,3 +14,9 @@ export async function getAnimalsHome(){
         .limit(3);
     return result;
 }
+
+export async function getAnimalsDashboard(){
+    const fetchData = {name: 1, need: 1, image: 1, location: 1}
+    const result = await Animal.find({}, fetchData);
+    return result;
+}
