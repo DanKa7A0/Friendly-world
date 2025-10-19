@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import handlebars from "express-handlebars";
 import cookieParser from "cookie-parser";
+import router from "./router.js";
 
 const app = express();
 const PORT = 5000;
@@ -27,17 +28,13 @@ app.set("view engine", "hbs");
 app.set("views", "src/views");
 
 // setup
-// app.use(express.static('src/public'));
+app.use(express.static("src/public"));  
 app.use(express.urlencoded());
 app.use(cookieParser());
 // app.use(authMiddleware);
 
-app.get("/", (req, res) => {
-    res.send(111);
-})
-
 // routing
-// app.use(routes);
+app.use(router);
 
 // start
 app.listen(PORT, () => console.log(`Server is listening on http://localhost:${PORT}`));
