@@ -11,8 +11,8 @@ authController.get("/register", (req, res) => {
 authController.post("/register", async (req, res) => {
     const userData = req.body;
     try {
-        await authService.register(userData);
-        res.redirect("/");
+        const token = await authService.register(userData);
+        res.status(201).cookie("auth", token).redirect("/");
     }
     catch(err){        
         const errMsg = getErrMsg(err);
