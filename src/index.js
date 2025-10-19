@@ -9,12 +9,12 @@ import pageHelper from "./helpers/pageHelper.js";
 import { authMiddleware } from "./middlewares/authMiddleware.js";
 
 const app = express();
-const PORT = 5000;
-const db = "mongodb://localhost:27017/";
+const PORT = process.env.PORT ?? 5000;
+const DB = process.env.DB ?? "mongodb://localhost:27017/";
         
 // connect to db
 try {
-    await mongoose.connect(db, { dbName: "Friendly_World" });
+    await mongoose.connect(DB, { dbName: "Friendly_World" });
     console.log("Successfully connected to db");
 } catch(err){
     console.error("Can not connect to db", err);
