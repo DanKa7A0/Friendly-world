@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import handlebars from "express-handlebars";
 import cookieParser from "cookie-parser";
+import "dotenv/config";
 
 import router from "./router.js";
 import pageHelper from "./helpers/pageHelper.js";
