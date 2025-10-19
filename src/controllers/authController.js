@@ -1,14 +1,15 @@
 import { Router } from "express";
 import { authService } from "../services/index.js";
 import { getErrMsg } from "../utils/errorUtil.js";
+import { isGuest } from "../middlewares/authMiddleware.js";
 
 const authController = Router();
 
-authController.get("/register", (req, res) => {
+authController.get("/register", isGuest, (req, res) => {
     res.render("auth/register");
 });
 
-authController.post("/register", async (req, res) => {
+authController.post("/register", isGuest, async (req, res) => {
     const userData = req.body;
     try {
         const token = await authService.register(userData);
@@ -21,11 +22,11 @@ authController.post("/register", async (req, res) => {
 });
 
 
-authController.get("/login", (req, res) => {
+authController.get("/login", isGuest, (req, res) => {
     res.render("auth/login");
 });
 
-authController.post("/login", async (req, res) => {
+authController.post("/login", isGuest, async (req, res) => {
     const userData = req.body;
     try {
         const token = await authService.login(userData);
