@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { authService } from "../services/index.js";
 import { getErrMsg } from "../utils/errorUtil.js";
-import { isGuest } from "../middlewares/authMiddleware.js";
+import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 
 const authController = Router();
 
@@ -21,7 +21,6 @@ authController.post("/register", isGuest, async (req, res) => {
     }
 });
 
-
 authController.get("/login", isGuest, (req, res) => {
     res.render("auth/login");
 });
@@ -36,6 +35,10 @@ authController.post("/login", isGuest, async (req, res) => {
         const errMsg = getErrMsg(err);
         res.render("auth/login", {errMsg, userData});
     }
+});
+
+authController.get("/logout", isAuth, (req, res) => {
+    res.clearCookie("auth").redirect("/");
 });
 
 export default authController;
