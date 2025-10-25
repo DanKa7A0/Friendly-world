@@ -35,6 +35,7 @@ export async function getAnimal(animalId){
             , need: 1
             , location: 1
             , description: 1
+            , donation: 1
             , owner: 1
         });
 
