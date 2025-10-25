@@ -28,4 +28,9 @@ animalController.get("/search", async (req, res) => {
     res.render("search", {animals});
 });
 
+animalController.get("/details/:id", (req, res) => {
+    res.render("animals/details");
+});
+
+
 export default animalController;
