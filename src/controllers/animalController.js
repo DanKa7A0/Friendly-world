@@ -39,4 +39,12 @@ animalController.get("/details/:id", async (req, res) => {
     res.render("animals/details", { animal, isOwner, isDonated });
 });
 
+animalController.get("/donate/:id", isAuth, async (req, res) => {
+    const animal_ID = req.params.id;
+    const user_ID = req.user.id;
+
+    await animalService.donateToAnimal(animal_ID, user_ID);
+    res.redirect("/animals/details/" + animal_ID);
+});
+
 export default animalController;

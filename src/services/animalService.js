@@ -24,9 +24,9 @@ export async function getAnimals(filter = {}){
     return animals;
 }
 
-export async function getAnimal(animalId){
+export async function getAnimal(animal_ID){
     const animalData = Animal
-        .findById(animalId)
+        .findById(animal_ID)
         .select({
             name: 1
             , image: 1
@@ -40,4 +40,8 @@ export async function getAnimal(animalId){
         });
 
     return animalData;
+}
+
+export async function donateToAnimal(animal_ID, user_ID){
+    return Animal.findByIdAndUpdate(animal_ID, { $addToSet: { donation: user_ID }});
 }
