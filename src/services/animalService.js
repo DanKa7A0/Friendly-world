@@ -26,7 +26,16 @@ export async function getAnimals(filter = {}){
 
 export async function getAnimal(animalId){
     const animalData = Animal
-        .findById(animalId);
+        .findById(animalId)
+        .select({
+            name: 1
+            , image: 1
+            , years: 1
+            , kind: 1
+            , need: 1
+            , location: 1
+            , description: 1
+        });
 
     return animalData;
 }
