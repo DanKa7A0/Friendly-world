@@ -47,4 +47,11 @@ animalController.get("/donate/:id", isAuth, async (req, res) => {
     res.redirect("/animals/details/" + animal_ID);
 });
 
+animalController.get("/delete/:id", isAuth, async (req, res) => {
+    const animal_ID = req.params.id;
+
+    await animalService.deleteAnimal(animal_ID);
+    res.redirect("/dashboard");
+});
+
 export default animalController;

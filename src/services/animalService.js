@@ -45,3 +45,7 @@ export async function getAnimal(animal_ID){
 export async function donateToAnimal(animal_ID, user_ID){
     return Animal.findByIdAndUpdate(animal_ID, { $addToSet: { donation: user_ID }});
 }
+
+export async function deleteAnimal(animal_ID){
+    return Animal.findByIdAndDelete(animal_ID);
+}
