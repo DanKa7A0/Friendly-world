@@ -53,6 +53,21 @@ animalController.get("/edit/:id", isAuth, async (req, res) => {
     res.render("animals/edit", { animal });
 });
 
+animalController.post("/edit/:id", isAuth, async (req, res) => {
+    const animalData = req.body;
+    const animal_ID = req.params.id;
+
+    try {
+        await animalService.updateAnimal(animal_ID, animalData);
+        res.redirect("/animals/details/" + animal_ID);
+    }
+    catch(err){        
+        const errMsg = getErrMsg(err);
+        res.render("animals/edit", {errMsg, animal: animalData});
+    }
+});
+
+
 animalController.get("/delete/:id", isAuth, async (req, res) => {
     const animal_ID = req.params.id;
 
