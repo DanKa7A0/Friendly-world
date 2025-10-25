@@ -30,8 +30,12 @@ animalController.get("/search", async (req, res) => {
 
 animalController.get("/details/:id", async (req, res) => {
     const animal_ID = req.params.id;
-    const animalData = await animalService.getAnimal(animal_ID);
-    res.render("animals/details", { animal: animalData });
+    const user_ID = req.user?.id;
+
+    const animal = await animalService.getAnimal(animal_ID);
+    const isOwner = animal.owner.equals(user_ID);
+
+    res.render("animals/details", { animal, isOwner });
 });
 
 export default animalController;
