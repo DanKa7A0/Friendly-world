@@ -5,10 +5,12 @@ It allows users to help animals in need, share rescue posts, and donate to cause
 ## ⚙️ Project Setup
 - install mongo db
 - install node js
-- git clone https://github.com/username/friendly-world.git
-- cd friendly-world
-- npm install
-- npm start
+```bash
+git clone https://github.com/username/friendly-world.git
+cd friendly-world
+npm install
+npm start
+```
 
 ## 🛠️ Technologies & Tools
 | Layer                 | Stack                                      |
