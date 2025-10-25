@@ -23,3 +23,10 @@ export async function getAnimals(filter = {}){
 
     return animals;
 }
+
+export async function getAnimal(animalId){
+    const animalData = Animal
+        .findById(animalId);
+
+    return animalData;
+}

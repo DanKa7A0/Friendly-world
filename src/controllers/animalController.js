@@ -28,9 +28,10 @@ animalController.get("/search", async (req, res) => {
     res.render("search", {animals});
 });
 
-animalController.get("/details/:id", (req, res) => {
-    res.render("animals/details");
+animalController.get("/details/:id", async (req, res) => {
+    const animal_ID = req.params.id;
+    const animalData = await animalService.getAnimal(animal_ID);
+    res.render("animals/details", { animal: animalData });
 });
-
 
 export default animalController;
