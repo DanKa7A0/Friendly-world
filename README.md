@@ -23,7 +23,7 @@ npm start
 | **Frontend**          | HTML, CSS, JavaScript                      |
 | **Operations**        | Full CRUD + Search + Donation              |
 
-## ✨ Feats
+## ✨ Features
 - **Home page (shows last 3 added posts)**
 - **Auth & security**
 - **Dashboards (shows all animals posts)**
